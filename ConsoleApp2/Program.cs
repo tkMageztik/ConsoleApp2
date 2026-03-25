@@ -5,23 +5,16 @@
         static void Main(string[] args)
         {
             var food = 5;
-            //var comensales = new int[] { 3, 1, 2, 1, 5 };
-            //var comensales = new int[] { 3, 5, 2, 1 }
+            //var comensales = new int[] { 2, 3, 4, 5};
+            //var comensales = new int[] { 3, 5, 2, 1 };
+            //var comensales = new int[] { 3, 5, 2, 1 };
             //var comensales = new int[] { 1, 3, 5, 1 };
             var comensales = new int[] { 3, 1, 2, 1 };
+            //var comensales = new int[] { 1, 3, 5, 1 };
 
             var grupos = comensales.Chunk(2).ToList();
 
-            var diferencias = new List<int>();
-
             var newArray = new List<int>();
-
-            foreach (var grupo in grupos)
-            {
-                diferencias.Add(grupo.ElementAtOrDefault(0) - grupo.ElementAtOrDefault(1));
-            }
-
-            diferencias.OrderDescending();
 
             for (int j = 0; j < grupos.Count(); j++)
             {
@@ -36,8 +29,8 @@
                 int toRemove = Math.Min(food, difference);
                 food -= toRemove;
 
-                newArray.Insert(j * 2, min);
-                newArray.Insert(j * 2 + index, food - toRemove);
+                newArray.Insert(j * 2, Math.Abs(0 - min));
+                newArray.Insert(j * 2 + index, max - toRemove);
 
                 //Console.WriteLine($"index: {index} + group:" + j);
 
