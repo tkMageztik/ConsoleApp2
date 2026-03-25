@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace ConsoleApp2
@@ -7,8 +8,6 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-
             var food = 5;
             //var comensales = new int[] { 3, 1, 2, 1, 5 };
             //var comensales = new int[] { 3, 5, 2, 1 }
@@ -26,7 +25,7 @@ namespace ConsoleApp2
                 //diferencias.Add(grupo[0] - grupo[1]);
                 diferencias.Add(grupo.ElementAtOrDefault(0) - grupo.ElementAtOrDefault(1));
 
-                Console.WriteLine($"Grupo: {string.Join(", ", grupo)}");
+                //Console.WriteLine($"Grupo: {string.Join(", ", grupo)}");
             }
 
             diferencias.OrderDescending();
@@ -44,10 +43,10 @@ namespace ConsoleApp2
                 int toRemove = Math.Min(food, difference);
                 food -= toRemove;
 
-                newArray.Insert(j * 2, 0);
-                newArray.Insert(j * 2 + index, toRemove);
+                newArray.Insert(j * 2, min);
+                newArray.Insert(j * 2 + index, food - toRemove);
 
-                Console.WriteLine($"index: {index} + group:" + j);
+                //Console.WriteLine($"index: {index} + group:" + j);
 
                 //si es el indice 0 del grupo, tiene q ser 0 o 1
                 // si es el indice 1 del grupo tiene q ser 2 o 3
@@ -55,11 +54,16 @@ namespace ConsoleApp2
 
             }
 
-            foreach (var item in newArray)
-            {
-                Console.WriteLine($"new array: {item}");
+            var newGroups = newArray.Chunk(2).ToList();
+            var result = 0;
 
+            foreach (var newGroup in newGroups)
+            {
+                result += Math.Abs(newGroup.ElementAtOrDefault(0) - newGroup.ElementAtOrDefault(1)); ;
             }
+
+
+            Console.WriteLine($"result: {result}");
         }
     }
 }
