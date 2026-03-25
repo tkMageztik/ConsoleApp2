@@ -31,18 +31,10 @@ namespace ConsoleApp2
 
             diferencias.OrderDescending();
 
-            //while (food > 0)
-            //{
-            //    for (int i = 0; i < diferencias.Count; i++)
-            //{
-            //var diferencia = diferencias[i];
-
             for (int j = 0; j < grupos.Count(); j++)
             {
                 var max = Math.Max(grupos[j].ElementAtOrDefault(0), grupos[j].ElementAtOrDefault(1));
                 var min = Math.Min(grupos[j].ElementAtOrDefault(0), grupos[j].ElementAtOrDefault(1));
-
-                //var affected = grupos[j].Where(x => x == max).FirstOrDefault();
 
                 var index = Array.IndexOf(grupos[j].ToArray(), max);
 
@@ -55,18 +47,13 @@ namespace ConsoleApp2
                 newArray.Insert(j * 2, 0);
                 newArray.Insert(j * 2 + index, toRemove);
 
-
                 Console.WriteLine($"index: {index} + group:" + j);
-
-                //}
-
 
                 //si es el indice 0 del grupo, tiene q ser 0 o 1
                 // si es el indice 1 del grupo tiene q ser 2 o 3
                 // si es el indice 2 del grupo, tiene q ser 4 o 5
 
             }
-
 
             foreach (var item in newArray)
             {
@@ -75,5 +62,4 @@ namespace ConsoleApp2
             }
         }
     }
-
 }
