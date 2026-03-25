@@ -1,8 +1,4 @@
-﻿using System;
-using System.Reflection;
-using System.Text.RegularExpressions;
-
-namespace ConsoleApp2
+﻿namespace ConsoleApp2
 {
     internal class Program
     {
@@ -22,10 +18,7 @@ namespace ConsoleApp2
 
             foreach (var grupo in grupos)
             {
-                //diferencias.Add(grupo[0] - grupo[1]);
                 diferencias.Add(grupo.ElementAtOrDefault(0) - grupo.ElementAtOrDefault(1));
-
-                //Console.WriteLine($"Grupo: {string.Join(", ", grupo)}");
             }
 
             diferencias.OrderDescending();
@@ -51,7 +44,6 @@ namespace ConsoleApp2
                 //si es el indice 0 del grupo, tiene q ser 0 o 1
                 // si es el indice 1 del grupo tiene q ser 2 o 3
                 // si es el indice 2 del grupo, tiene q ser 4 o 5
-
             }
 
             var newGroups = newArray.Chunk(2).ToList();
@@ -61,7 +53,6 @@ namespace ConsoleApp2
             {
                 result += Math.Abs(newGroup.ElementAtOrDefault(0) - newGroup.ElementAtOrDefault(1)); ;
             }
-
 
             Console.WriteLine($"result: {result}");
         }
